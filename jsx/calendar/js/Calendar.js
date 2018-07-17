@@ -16,7 +16,6 @@ const Calendar = ({ date }) => {
 
   const month = date.toLocaleString("ru", {month: 'long',});
   const monthToUpperCase = month[0].toUpperCase() + month.slice(1);
-  console.log(<h1>1</h1>);
 
   const monthNames = [
     "Января", "Февраля", "Марта",
