@@ -1,7 +1,7 @@
 'use strict';
 
 function Stars({ count }) {
-  const arr = new Array(count).fill([]);
+  const arr = new Array(count).fill("");
   
   if(count < 1 || count > 5 || typeof count !== "number") return null;
   

@@ -1,14 +1,14 @@
 'use strict';
 
-const HexInput = props => {
-  function onChange() {
-    props.onChange(this.value);
-  }
-
+const HexInput = ({ onChange, value }) => {
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
+  
   return (
     <input
-      value={props.value}
-      onChange={onChange}
+      value={value}
+      onChange={handleChange}
       type="text"
       className="hex-field js-hex-field"
       placeholder="#000000" />
