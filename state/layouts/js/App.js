@@ -1,20 +1,16 @@
 'use strict';
 
-const VIEW_LIST = "view_list";
-const VIEW_MODULE = "view_module";
-
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="toolbar">
-          <IconSwitch
-            icon={VIEW_MODULE}
-            onSwitch={() => console.log("сменился тип вывода")} />
-        </div>
-        {this.renderLayout(true)}
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      onSwitch: "view_module",
+    }
+  }
+
+  handleSwitched = () => {
+    this.state.onSwitch === "view_module" ? this.setState({ onSwitch: "view_list" })
+                                          : this.setState({ onSwitch: "view_module" })
   }
 
   renderLayout(cardView) {
@@ -22,12 +18,13 @@ class App extends React.Component {
       return (
         <CardsView
           layout={this.props.layout}
-          cards={this.getShopItems(this.props.products, cardView)} />
+          cards={this.getShopItems(this.props.products, cardView)} 
+        />
       );
     }
     return (<ListView items={this.getShopItems(this.props.products, cardView)} />);
   }
-
+  
   getShopItems(products, cardView) {
     return products.map(product => {
       let cardProps = {
@@ -43,5 +40,19 @@ class App extends React.Component {
       }
       return (<ShopItem {...cardProps}/>)
     });
+  }
+
+  render() {
+    const cardView = this.state.onSwitch === "view_module" ? true : false;
+    return (
+      <div>
+        <div className="toolbar">
+          <IconSwitch
+            icon={this.state.onSwitch}
+            onSwitch={() => this.handleSwitched()} />
+        </div>
+        {this.renderLayout(cardView)}
+      </div>
+    );
   }
 }
