@@ -1,4 +1,4 @@
-const ShopItem = ({ props }) => (
+const ShopItem = ({ item }) => (
     <div className="main-content">
       <h2>{item.brand}</h2>
       <h1>{item.title}</h1>
