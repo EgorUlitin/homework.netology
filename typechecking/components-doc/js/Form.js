@@ -16,7 +16,7 @@ const Form = (props) => {
         <TextInput label="Пароль" type="password" name="password" onChange={props.handleChange}
                    value={props.password}/>
         <RadioGroup label="Пол" name="sex" onChange={props.handleChange} value={props.sex} list={['муж', 'жен']}/>
-
+        
         <button type="submit" className="btn btn-primary mt-2 float-right">Зарегистрироваться</button>
       </form>
     </div>

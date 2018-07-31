@@ -9,3 +9,15 @@ const DateInput = props => {
     </div>
   )
 };
+
+DateInput.propTypes = {
+  onChange: PropTypes.func,
+
+  label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+};
+
+DateInput.defaultProps = {
+  value: new Date(),
+};
