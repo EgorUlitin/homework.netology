@@ -2,21 +2,11 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = { fixed: false };
-    // this.isFixed = this.isFixed.bind(this);
-    this.myRef = null;
-
-    this.setInputRef = elem => {
-      this.myRef = elem;
-    };
-
-    this.scrollTop = () => {
-      this.myRef.focus();
-    };
+    this.isFixed = this.isFixed.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.isFixed);
-    this.scrollTop();
   }
 
   componentWillUnmount() {
@@ -24,18 +14,16 @@ class SearchBox extends React.Component {
   }
 
   isFixed() {
-    const value = this.myRef;
-    console.log(value);
+    window.pageYOffset > 164 ? this.setState({ fixed: true }) : this.setState({ fixed: false });
   }
 
-  setPosition() {
-    return undefined;
-  }
+  // setPosition() {
+  //   this.isFixed() ? this.setState({ isFixed: true }) : this.setState({ isFixed: false });
+  // }
 
   render() {
-    console.log(this.isFixed());
     return (
-      <SearchBoxView fixed={this.state.fixed} ref={el => (this.myRef = el)} />
+      <SearchBoxView fixed={this.state.fixed}/>
     );
   }
 }
